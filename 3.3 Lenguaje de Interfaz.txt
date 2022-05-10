@@ -1,0 +1,27 @@
+#Makefile
+# Nombre: Blas Benjamin Siordia Ramirez
+# N. control: 19210550
+# Github: SrBenji15
+
+#       compilacion normal (as->ld)
+all: assemble link
+
+#       ensamblado
+assemble: *.s
+        as -o exec.o *.s
+
+#       enlazado
+link: exec.o
+        ld -o exec exec.o
+
+#       desensamblado de .c a .s
+dissasemble_c: *.c
+        gcc -S *.c
+
+#       ... de .cpp a .s
+dissasemble_cpp: *.cpp
+        g++ -S *.cpp
+
+#limpieza de archivos intermedios
+clean:
+        rm -f exec.o exec
